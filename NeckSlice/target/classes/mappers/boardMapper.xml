@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neckcompany.neck.persistence.BoardDao">
+	
+  	<select id="selectBoardList" resultType="com.neckcompany.neck.domain.Board">
+    		select * from board
+  	</select>
+  	
+  	<select id="selectNowTime" resultType="String">
+    		select now()
+  	</select>
+  	
+  	<select id="insertBoard">
+  		insert into board (TITLE, CONTENT, AUTHOR, CREATE_DATETIME) 
+  		VALUES (#{title}, #{content}, #{author}, now())
+  	</select>
+</mapper>
