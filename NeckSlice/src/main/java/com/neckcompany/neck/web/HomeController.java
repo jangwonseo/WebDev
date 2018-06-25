@@ -42,7 +42,7 @@ public class HomeController {
 			System.out.println("@@" + b.getTitle());
 		});
 		
-		// hoho
+		
 		// insert
 		Board board = new Board();
 		board.setTitle("오만과편견");
