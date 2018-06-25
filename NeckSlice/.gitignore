@@ -1,3 +1,21 @@
-# /표시는 하위 모든 내용을 무시하겠다는 표시
-
-src/
+/target
+*.class
+pom.properties
+Thumbs.db
+.settings
+.classpath*
+/bin
+*.java.hsp
+*.sonarj
+.DS_Store
+.springBeans
+.externalToolBuilders
+.project
+.~lock.jms_mail.xls#
+.idea/
+/src/main/resources/dev/*
+/src/main/java/rebel.xml
+*.iml
+.tern-project
+src/main/resources/dev/
+rebel.xml
