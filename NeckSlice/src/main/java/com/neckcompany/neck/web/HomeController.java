@@ -34,7 +34,7 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
+		String formattedDate = dateFormat.format(date); 
 		
 		// select all
 		List<Board> boardList = boardDao.selectBoardList();
@@ -42,7 +42,7 @@ public class HomeController {
 			System.out.println("@@" + b.getTitle());
 		});
 		
-		
+		//go
 		// insert
 		Board board = new Board();
 		board.setTitle("오만과편견");
