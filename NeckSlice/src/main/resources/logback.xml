@@ -1,41 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-<!-- Console Appender -->
-<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-  <encoder>
-    <pattern>%d{yyyy-MM-dd HH:mm:ss} [%-5level]\(%file:%line\) %msg%n</pattern>
-  </encoder>
-</appender>
+<configuration debug="true">
 
-<!-- File Appender -->
-<appender name="all" class="ch.qos.logback.core.rolling.RollingFileAppender">
-  <file>/logs/all.log</file>
-  <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-    <fileNamePattern>/logs/all.log.%d{yyyy-MM-dd}</fileNamePattern>
-    <maxHistory>90</maxHistory>
-  </rollingPolicy>
-  <encoder>
-    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
-  </encoder>
-</appender>
+<!-- 로그를 파일에 쓸때 아래 주석을 알맞게 수정하여 사용한다. -->
+<!-- 	<property name="DEV_HOME" value="c:/logs"></property> -->
+<!-- 	<appender name="FILE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>${DEV_HOME}/debug.log</file> -->
+<!-- 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> -->
+<!-- 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern> -->
+<!-- 		</encoder> -->
 
-<!-- Logger -->
-<logger name="com" additivity="false">
-  <level value="error"/>
-  <appender-ref ref="STDOUT"/>
-  <appender-ref ref="all"/>
-</logger>
+<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+ 			<!-- rollover daily --> 
+<!-- 			<fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
+<!-- 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
+<!-- 				<maxFileSize>10MB</maxFileSize> -->
+<!-- 			</timeBasedFileNamingAndTriggeringPolicy> -->
+<!-- 		</rollingPolicy> -->
+<!-- 	</appender> -->
 
-<logger name="org" additivity="false">
-  <level value="error"/>
-  <appender-ref ref="STDOUT"/>
-  <appender-ref ref="all"/>
-</logger>
+<!-- 	<appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
+<!-- 		<file>${DEV_HOME}/error.log</file> -->
+<!-- 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> -->
+<!-- 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern> -->
+<!-- 		</encoder> -->
 
-<!-- Root Logger -->
-<root>
-  <level value="info"/>
-  <appender-ref ref="STDOUT"/>
-  <appender-ref ref="all"/>
-</root>
+<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
+ 			<!-- rollover daily -->
+<!-- 			<fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
+<!-- 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
+<!-- 				<maxFileSize>10MB</maxFileSize> -->
+<!-- 			</timeBasedFileNamingAndTriggeringPolicy> -->
+<!-- 		</rollingPolicy> -->
+<!-- 	</appender> -->
+
+<!-- 	<logger name="com.mkyong.web" level="debug" -->
+<!-- 		additivity="false"> -->
+<!-- 		<appender-ref ref="FILE-AUDIT" /> -->
+<!-- 		<appender-ref ref="STDOUT" /> -->
+<!-- 	</logger> -->
+
+<!-- 	<root level="error"> -->
+<!-- 		<appender-ref ref="FILE-ERROR" /> -->
+<!-- 	</root> -->
+
+
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+<!-- 			<Pattern> -->
+<!-- 				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n -->
+<!-- 			</Pattern> -->
+		<encoder>	
+	      	<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+	    </encoder>
+		</layout>
+	</appender>
+	
+	<logger name="jdbc.sqlonly" level="DEBUG" additivity="false">
+		<appender-ref ref="STDOUT"></appender-ref>
+	</logger>
+	<logger name="jdbc.sqltiming" level="WARN" additivity="false"></logger>
+	<logger name="jdbc.audit" level="WARN" additivity="false"></logger>
+	<logger name="jdbc.resultset" level="ERROR" additivity="false"></logger>
+	<logger name="jdbc.resultsettable" level="ERROR" additivity="false"></logger>
+	<logger name="jdbc.connection" level="INFO" additivity="false"></logger>
+	
+	<!-- 
+	위처럼 5단계의 level이 존재합니다. TRACE라고 선언을 하면 trace,debug,info,warn,error 모든 Level을 포함합니다. 
+	그리고 INFO로 설정된다면 info.warn,error이 포함 됩니다.
+	 -->
 </configuration>

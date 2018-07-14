@@ -20,6 +20,7 @@
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 			<exclusions>
+				<!-- Spring에서 기본적으로 Commons Logging를 사용하므로 다음과 같이 commons-logging를 제외해준다. -->
 				<!-- Exclude Commons Logging in favor of SLF4j -->
 				<exclusion>
 					<groupId>commons-logging</groupId>
@@ -81,11 +82,11 @@
         </dependency>
         
         <!-- log4jdbc-log4j2 -->
-		<dependency>
-		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
-		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> <!-- ***-jdbc4.1 for java8 -->
-		    <version>1.16</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 		    <groupId>org.bgee.log4jdbc-log4j2</groupId> -->
+<!-- 		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> ***-jdbc4.1 for java8 -->
+<!-- 		    <version>1.16</version> -->
+<!-- 		</dependency> -->
 		
 		<!-- slf4j -->
 		<dependency>
@@ -93,11 +94,11 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
-		<dependency>
-	        <groupId>org.slf4j</groupId>
-	        <artifactId>slf4j-simple</artifactId>
-	        <version>1.7.21</version>
-	    </dependency>
+		<!-- <dependency> -->
+<!-- 	        <groupId>org.slf4j</groupId> -->
+<!-- 	        <artifactId>slf4j-simple</artifactId> -->
+<!-- 	        <version>1.7.21</version> -->
+<!-- 	    </dependency> -->
 		
 		<!-- logback -->
 		<dependency>
@@ -110,39 +111,26 @@
 		    <groupId>ch.qos.logback</groupId>
 		    <artifactId>logback-classic</artifactId>
 		    <version>1.2.3</version>
-		    <scope>test</scope>
 		</dependency>
 		
         <!-- log4j2 -->
-       <dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-core</artifactId>
-		    <version>${log4j2.version}</version>
-		</dependency>
-        <dependency>
-		    <groupId>org.apache.logging.log4j</groupId>
-		    <artifactId>log4j-api</artifactId>
-		    <version>${log4j2.version}</version>
-		</dependency>
-		
-		<!-- log4j-slf4j -->
-	<!-- 	<dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>log4j-over-slf4j</artifactId>
-		    <version>1.7.25</version>
-		</dependency> -->
+<!--        <dependency> -->
+<!-- 		    <groupId>org.apache.logging.log4j</groupId> -->
+<!-- 		    <artifactId>log4j-core</artifactId> -->
+<!-- 		    <version>${log4j2.version}</version> -->
+<!-- 		</dependency> -->
+<!--         <dependency> -->
+<!-- 		    <groupId>org.apache.logging.log4j</groupId> -->
+<!-- 		    <artifactId>log4j-api</artifactId> -->
+<!-- 		    <version>${log4j2.version}</version> -->
+<!-- 		</dependency> -->
 		
 		<!-- log4j-jcl -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>jcl-over-slf4j</artifactId>
-			<version>1.7.25</version>
-		</dependency>
-<!-- 		 <dependency>
-		    <groupId>org.slf4j</groupId>
-		    <artifactId>slf4j-jcl</artifactId>
-		    <version>1.7.25</version>
-		 </dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.slf4j</groupId> -->
+<!-- 			<artifactId>jcl-over-slf4j</artifactId> -->
+<!-- 			<version>1.7.25</version> -->
+<!-- 		</dependency> -->
 
 		<!-- MySql -->
 		<dependency>
