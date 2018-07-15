@@ -13,11 +13,9 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	<!-- LogbackServletContainerInitializer 없어도 실행잘 되지만.. 혹시 몰라서 남겨-->
-	<!-- 
-	<listener>
-    		<listener-class>ch.qos.logback.classic.servlet.LogbackServletContainerInitializer</listener-class>
-	</listener>
+	
+	<!-- LogbackServletContainerInitializer 없어도 실행잘 되지만.. 혹시 몰라서 남겨놓음.
+	<listener><listener-class>ch.qos.logback.classic.servlet.LogbackServletContainerInitializer</listener-class></listener>
 	 -->
 
 	<!-- Processes application requests -->

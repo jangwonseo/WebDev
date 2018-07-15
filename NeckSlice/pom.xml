@@ -82,11 +82,11 @@
         </dependency>
         
         <!-- log4jdbc-log4j2 -->
-<!-- 		<dependency> -->
-<!-- 		    <groupId>org.bgee.log4jdbc-log4j2</groupId> -->
-<!-- 		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> ***-jdbc4.1 for java8 -->
-<!-- 		    <version>1.16</version> -->
-<!-- 		</dependency> -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId> <!-- log4jdbc version 4.1 for java8 -->
+		    <version>1.16</version>
+		</dependency>
 		
 		<!-- slf4j -->
 		<dependency>
@@ -94,12 +94,7 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.25</version>
 		</dependency>
-		<!-- <dependency> -->
-<!-- 	        <groupId>org.slf4j</groupId> -->
-<!-- 	        <artifactId>slf4j-simple</artifactId> -->
-<!-- 	        <version>1.7.21</version> -->
-<!-- 	    </dependency> -->
-		
+
 		<!-- logback -->
 		<dependency>
 		    <groupId>ch.qos.logback</groupId>
@@ -113,25 +108,6 @@
 		    <version>1.2.3</version>
 		</dependency>
 		
-        <!-- log4j2 -->
-<!--        <dependency> -->
-<!-- 		    <groupId>org.apache.logging.log4j</groupId> -->
-<!-- 		    <artifactId>log4j-core</artifactId> -->
-<!-- 		    <version>${log4j2.version}</version> -->
-<!-- 		</dependency> -->
-<!--         <dependency> -->
-<!-- 		    <groupId>org.apache.logging.log4j</groupId> -->
-<!-- 		    <artifactId>log4j-api</artifactId> -->
-<!-- 		    <version>${log4j2.version}</version> -->
-<!-- 		</dependency> -->
-		
-		<!-- log4j-jcl -->
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.slf4j</groupId> -->
-<!-- 			<artifactId>jcl-over-slf4j</artifactId> -->
-<!-- 			<version>1.7.25</version> -->
-<!-- 		</dependency> -->
-
 		<!-- MySql -->
 		<dependency>
             <groupId>mysql</groupId>
