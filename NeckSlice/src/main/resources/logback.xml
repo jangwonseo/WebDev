@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true">
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+	 
+	<!--5단계의 level이 존재. TRACE라고 선언을 하면 trace,debug,info,warn,error 모든 Level을 포함. 
+	그리고 INFO로 설정된다면 info.warn,error이 포함.-->
+	
+	<!-- appener는 출력할 곳을 지정하는 태 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern> %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n </Pattern>
+		</layout>
+	</appender>
+
+	<!-- 아래 logger와 같이 name attribute에 logger를 사용할 class 명을 명시해주어야 작동한다.
+	log4jdbc에서는 jdbc를 직접 인터셉트하기때문에 아래와같이 일일이 클래스명을 지정해주지 않아도 된다. -->
+    <logger name="com.neckcompany.neck.web.HomeController" level="WARN" additivity="false">
+    		<appender-ref ref="STDOUT"></appender-ref>
+    </logger>
+    
+<!--     <root level="DEBUG"> -->
+<!--         <appender-ref ref="STDOUT" /> -->
+<!--     </root> -->
+	
+	<!-- for log4jdbc -->
+<!-- 	<logger name="jdbc.sqlonly" level="DEBUG" additivity="false"> -->
+<!-- 		<appender-ref ref="STDOUT"></appender-ref> -->
+<!-- 	</logger> -->
+<!-- 	<logger name="jdbc.sqltiming" level="WARN" additivity="false"></logger> -->
+<!-- 	<logger name="jdbc.audit" level="WARN" additivity="false"></logger> -->
+<!-- 	<logger name="jdbc.resultset" level="ERROR" additivity="false"></logger> -->
+<!-- 	<logger name="jdbc.resultsettable" level="ERROR" additivity="false"></logger> -->
+<!-- 	<logger name="jdbc.connection" level="INFO" additivity="false"></logger> -->
+	
+	
+</configuration>
+
 
 <!-- 로그를 파일에 쓸때 아래 주석을 알맞게 수정하여 사용한다. -->
 <!-- 	<property name="DEV_HOME" value="c:/logs"></property> -->
@@ -42,32 +76,3 @@
 <!-- 	<root level="error"> -->
 <!-- 		<appender-ref ref="FILE-ERROR" /> -->
 <!-- 	</root> -->
-
-
-	<include resource="org/springframework/boot/logging/logback/base.xml"/>
-	
-	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-		<layout class="ch.qos.logback.classic.PatternLayout">
-<!-- 			<Pattern> -->
-<!-- 				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n -->
-<!-- 			</Pattern> -->
-		<encoder>	
-	      	<pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
-	    </encoder>
-		</layout>
-	</appender>
-	
-	<logger name="jdbc.sqlonly" level="DEBUG" additivity="false">
-		<appender-ref ref="STDOUT"></appender-ref>
-	</logger>
-	<logger name="jdbc.sqltiming" level="WARN" additivity="false"></logger>
-	<logger name="jdbc.audit" level="WARN" additivity="false"></logger>
-	<logger name="jdbc.resultset" level="ERROR" additivity="false"></logger>
-	<logger name="jdbc.resultsettable" level="ERROR" additivity="false"></logger>
-	<logger name="jdbc.connection" level="INFO" additivity="false"></logger>
-	
-	<!-- 
-	위처럼 5단계의 level이 존재합니다. TRACE라고 선언을 하면 trace,debug,info,warn,error 모든 Level을 포함합니다. 
-	그리고 INFO로 설정된다면 info.warn,error이 포함 됩니다.
-	 -->
-</configuration>
