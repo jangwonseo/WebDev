@@ -14,11 +14,15 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="url" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/board?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;autoReconnect=true&amp;useSSL=false"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:mysql://127.0.0.1:3306/board?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;autoReconnect=true&amp;useSSL=false"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value="15032066"></property>
+		<property name="maximumPoolSize" value="10"></property>
+		<property name="idleTimeout" value="30000"></property>
+		<property name="connectionTestQuery" value="select 1"></property>
+		<!-- https://github.com/brettwooldridge/HikariCP 에서 관련 property 설정을 더 볼 수 있--> 
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
