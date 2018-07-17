@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
+
 <!-- http://www.mybatis.org/mybatis-3/ko/configuration.html 참조 -->
+
+	<settings>
+        <!-- resultType이 HashMap일때 값이 null인 컬럼 누락 방지 -->
+        <setting name="callSettersOnNulls" value="true"></setting>
+    </settings>
+
 <!-- 타입 별칭은 자바 타입에 대한 짧은 이름이다. 오직 XML 설정에서만 사용되며, 타이핑을 줄이기 위해 존재한다. 예를들면: -->
 <!-- 	<typeAliases> -->
 <!--   		<typeAlias alias="Section" type="domain.blog.Section"/> -->
