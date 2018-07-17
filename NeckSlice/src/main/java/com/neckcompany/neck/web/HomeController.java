@@ -14,16 +14,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.neckcompany.neck.domain.Board;
-import com.neckcompany.neck.persistence.BoardDao;
+import com.neckcompany.neck.service.BoardService;
 
-/**
- * Handles requests for the application home page.
- */
 @Controller
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	@Autowired BoardDao boardDao;
+	
+	@Autowired BoardService boardService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -31,37 +29,28 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-//		logger.trace("trace");
-//        logger.debug("debug");
-//        logger.info("info");
-//        logger.warn("warn");
-//        logger.error("error");
         
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date); 
+		model.addAttribute("serverTime", formattedDate );
 		
 		// select all
-		List<Board> boardList = boardDao.selectBoardList();
+		List<Board> boardList = boardService.getBoardList();
 		boardList.stream().forEach(b-> {
 			System.out.println("@@" + b.getTitle());
 		});
 		
-		//go
 		// insert
 		Board board = new Board();
 		board.setTitle("오만과편견");
 		board.setContent("중세시대이야기입니다.");
 		board.setAuthor("서장원");
-		boardDao.insertBoard(board);
+		boardService.saveBoard(board);
 		
 		// now
-//		System.out.println(boardDao.selectNowTime());
-		
-		
-		model.addAttribute("serverTime", formattedDate );
+		System.out.println("now ServiceTime : " + boardService.nowTime());
 		
 		return "home";
 	}
-	
 }
