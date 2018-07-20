@@ -31,7 +31,7 @@
     <!-- 아래 logger와 같이 name attribute에 logger를 사용할 class 명을 명시해주어야 작동한다.(log4jdbc 사용전)
 	log4jdbc에서는 jdbc를 직접 인터셉트하기때문에 아래와같이 일일이 클래스명을 지정해주지 않아도 된다. -->
 	<!--
-    <logger name="com.neckcompany.neck.web.HomeController" level="WARN" additivity="false">
+    <logger name="com.neckcompany.neck.board.web.HomeController" level="WARN" additivity="false">
     		<appender-ref ref="STDOUT"></appender-ref>
     </logger>
     <root level="DEBUG"><appender-ref ref="STDOUT" /></root>

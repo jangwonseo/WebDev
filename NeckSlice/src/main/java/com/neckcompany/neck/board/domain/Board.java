@@ -1,4 +1,4 @@
-package com.neckcompany.neck.domain;
+package com.neckcompany.neck.board.domain;
 
 import java.time.LocalDateTime;
 

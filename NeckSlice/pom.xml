@@ -81,6 +81,13 @@
             <version>2.9.4</version>
         </dependency>
         
+        <!-- JPA, hibernate : entitymanager를 받으면 hibernate-core.jar, hibernate-jpa-2.1-api.jar도 자동으로 받는다.-->
+        <dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
+		    <version>5.2.17.Final</version>
+		</dependency>
+		
         <!-- log4jdbc-log4j2 -->
 		<dependency>
 		    <groupId>org.bgee.log4jdbc-log4j2</groupId>

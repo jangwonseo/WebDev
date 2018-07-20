@@ -1,8 +1,8 @@
-package com.neckcompany.neck.service;
+package com.neckcompany.neck.board.service;
 
 import java.util.List;
 
-import com.neckcompany.neck.domain.Board;
+import com.neckcompany.neck.board.domain.Board;
 
 public interface BoardService {
 	

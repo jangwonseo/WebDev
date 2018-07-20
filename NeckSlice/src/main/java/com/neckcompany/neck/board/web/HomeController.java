@@ -1,4 +1,4 @@
-package com.neckcompany.neck.web;
+package com.neckcompany.neck.board.web;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,8 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.neckcompany.neck.domain.Board;
-import com.neckcompany.neck.service.BoardService;
+import com.neckcompany.neck.board.domain.Board;
+import com.neckcompany.neck.board.service.BoardService;
 
 @Controller
 public class HomeController {

@@ -1,8 +1,8 @@
-package com.neckcompany.neck.persistence;
+package com.neckcompany.neck.board.persistence;
 
 import java.util.List;
 
-import com.neckcompany.neck.domain.Board;
+import com.neckcompany.neck.board.domain.Board;
 
 public interface BoardDao {
 	

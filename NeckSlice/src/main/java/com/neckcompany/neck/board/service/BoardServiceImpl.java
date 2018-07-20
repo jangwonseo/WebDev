@@ -1,12 +1,12 @@
-package com.neckcompany.neck.service;
+package com.neckcompany.neck.board.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.neckcompany.neck.domain.Board;
-import com.neckcompany.neck.persistence.BoardDao;
+import com.neckcompany.neck.board.domain.Board;
+import com.neckcompany.neck.board.persistence.BoardDao;
 
 @Service
 public class BoardServiceImpl implements BoardService {
