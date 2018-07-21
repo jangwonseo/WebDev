@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -14,12 +15,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="COMMENT")
+@Table(name="COMMENT", catalog = "Main_Board")
 public class Comment {
 	
-	@Id
+	@Id @GeneratedValue
 	@Column(name="COMMENT_ID")
-	private Long commandId;
+	private Long id;
 	
 	@ManyToOne
 	@JoinColumn(name="FREE_BOARD_ID")

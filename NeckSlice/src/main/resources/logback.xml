@@ -11,19 +11,26 @@
 	<!-- appener는 출력할 곳을 지정하는 태 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<Pattern> %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n </Pattern>
+			<Pattern> %d{yyyy-MM-dd HH:mm:ss} %-5level %msg%n </Pattern>
+<!-- 			<Pattern> %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n </Pattern> -->
 		</layout>
 	</appender>
+
+	<logger name="org.hibernate.SQL" level="INFO"></logger>
+	<logger name="org.hibernate.type" level="OFF"></logger>
+    <logger name="org.hibernate.tool.hbm2ddl" level="OFF"></logger>
+    <logger name="org.hibernate.stat" level="OFF"></logger>
+    <logger name="org.hibernate.type.BasicTypeRegistry" level="OFF"></logger>
 
 	<!-- in favor of log4jdbc -->
 	<logger name="jdbc" level="OFF"/>
     <logger name="jdbc.sqlonly" level="OFF"/>
-    <logger name="jdbc.sqltiming" level="DEBUG"/>
+    <logger name="jdbc.sqltiming" level="OFF"/>
     <logger name="jdbc.audit" level="OFF"/>
     <logger name="jdbc.resultset" level="OFF"/>
     <logger name="jdbc.resultsettable" level="OFF"/>
-    <logger name="jdbc.connection" level="WARN"/>
-     
+    <logger name="jdbc.connection" level="OFF"/>
+   
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
@@ -38,46 +45,3 @@
 	  -->
 
 </configuration>
-
-
-<!-- 로그를 파일에 쓸때 아래 주석을 알맞게 수정하여 사용한다. -->
-<!-- 	<property name="DEV_HOME" value="c:/logs"></property> -->
-<!-- 	<appender name="FILE-AUDIT" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
-<!-- 		<file>${DEV_HOME}/debug.log</file> -->
-<!-- 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> -->
-<!-- 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern> -->
-<!-- 		</encoder> -->
-
-<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
- 			<!-- rollover daily --> 
-<!-- 			<fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
-<!-- 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
-<!-- 				<maxFileSize>10MB</maxFileSize> -->
-<!-- 			</timeBasedFileNamingAndTriggeringPolicy> -->
-<!-- 		</rollingPolicy> -->
-<!-- 	</appender> -->
-
-<!-- 	<appender name="FILE-ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender"> -->
-<!-- 		<file>${DEV_HOME}/error.log</file> -->
-<!-- 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> -->
-<!-- 			<Pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</Pattern> -->
-<!-- 		</encoder> -->
-
-<!-- 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> -->
- 			<!-- rollover daily -->
-<!-- 			<fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd}.%i.log</fileNamePattern> -->
-<!-- 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> -->
-<!-- 				<maxFileSize>10MB</maxFileSize> -->
-<!-- 			</timeBasedFileNamingAndTriggeringPolicy> -->
-<!-- 		</rollingPolicy> -->
-<!-- 	</appender> -->
-
-<!-- 	<logger name="com.mkyong.web" level="debug" -->
-<!-- 		additivity="false"> -->
-<!-- 		<appender-ref ref="FILE-AUDIT" /> -->
-<!-- 		<appender-ref ref="STDOUT" /> -->
-<!-- 	</logger> -->
-
-<!-- 	<root level="error"> -->
-<!-- 		<appender-ref ref="FILE-ERROR" /> -->
-<!-- 	</root> -->

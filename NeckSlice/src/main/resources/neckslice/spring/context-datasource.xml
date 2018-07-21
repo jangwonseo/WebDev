@@ -6,12 +6,30 @@
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:jee="http://www.springframework.org/schema/jee"
-	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
-		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc 
+		http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://www.springframework.org/schema/jee 
+		http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring 
+		http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/data/jpa
+		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	
+	<!-- 스프링 프레임워크가 제공하는 어노테이션 기반의 트랜잭션 관리자를 활성화한다. @Transactional에 트랜잭션을 적용한다. -->
+	<tx:annotation-driven/>
+	
+	<!-- spring-data-jpa 검색 -->
+	<jpa:repositories base-package="com.neckcompany.neck.**.repository"/>
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
@@ -23,6 +41,32 @@
 		<property name="idleTimeout" value="30000"></property>
 		<property name="connectionTestQuery" value="select 1"></property>
 		<!-- https://github.com/brettwooldridge/HikariCP 에서 관련 property 설정을 더 볼 수 있다.--> 
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></bean>
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="packagesToScan"><!-- @Entity 탐색 시작 위치 -->
+              <value>com.neckcompany.neck.**.entity</value>
+		</property> 
+		<property name="jpaVendorAdapter"> <!-- JPA를 구현할 벤더를 지정(하이버네이트 구현체) -->
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+		</property>
+		<property name="jpaProperties">	<!-- 하이버네이트의 구현체 속성 설정 -->
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>						<!-- SQL 콘솔출력 -->
+				<prop key="hibernate.format_sql">true</prop>						<!-- SQL 정렬해서 콘솔출력 -->
+				<prop key="hibernate.use_sql_comments">false</prop>				<!-- SQL 코멘트 보기 -->
+				<prop key="hibernate.id.new_generator_mappings">true</prop>		<!--JPA 표준에 맞는 새로운 키 생성 전략을 사용함. 항상 true-->
+<!-- 				<prop key="hibernate.hbm2ddl.auto">validate</prop>				처음에 도메인 객체 구성과 DB 스키마가 같은지 확인. 문제시엔 예외 -->
+			</props>
+		</property>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
