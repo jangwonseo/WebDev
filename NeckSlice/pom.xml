@@ -10,7 +10,7 @@
 	<properties>
 		<encoding>UTF-8</encoding>
 		<java-version>1.8</java-version>
-		<org.springframework-version>5.0.6.RELEASE</org.springframework-version>
+		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.13</org.aspectj-version>
 	</properties>
 	<dependencies>
@@ -38,7 +38,14 @@
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-tx</artifactId>
-		    <version>5.0.7.RELEASE</version>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- spring orm 스프링프레임워크와 jpa를 연동하기위한 라이브러-->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${org.springframework-version}</version>
 		</dependency>
 		
 		<!-- AspectJ -->

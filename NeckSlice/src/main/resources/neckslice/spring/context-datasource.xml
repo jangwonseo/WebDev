@@ -22,7 +22,7 @@
 		<property name="maximumPoolSize" value="10"></property>
 		<property name="idleTimeout" value="30000"></property>
 		<property name="connectionTestQuery" value="select 1"></property>
-		<!-- https://github.com/brettwooldridge/HikariCP 에서 관련 property 설정을 더 볼 수 있--> 
+		<!-- https://github.com/brettwooldridge/HikariCP 에서 관련 property 설정을 더 볼 수 있다.--> 
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
