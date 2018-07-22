@@ -29,7 +29,7 @@ public class FreeBoardController {
 		});
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		return "mainboard/mainboard";
+		return "mainboard/list";
 		
 	}
 }
