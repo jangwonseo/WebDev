@@ -18,4 +18,12 @@ public class FreeBoardImpl {
 	public List<FreeBoard> getAllFreeBoardList() {
 		return freeBoardRepository.findAll();
 	}
+	
+	public List<FreeBoard> getHittedOver(Integer hitCount) {
+		return freeBoardRepository.findByHitGreaterThan(hitCount);
+	}
+	
+	public List<FreeBoard> getHittedUnder(Integer hitCount) {
+		return freeBoardRepository.findByHitUnder(hitCount);
+	}
 }

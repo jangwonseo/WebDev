@@ -23,6 +23,11 @@ public class FreeBoardController {
 		List<FreeBoard> freeBoardList = freeBoardService.getAllFreeBoardList();
 		model.addAttribute("freeBoardList", freeBoardList);
 		
+		List<FreeBoard> hitBoardOverList = freeBoardService.getHittedOver(5);
+		model.addAttribute("hitBoardOverList", hitBoardOverList);
+		
+		List<FreeBoard> hitBoardUnderList = freeBoardService.getHittedUnder(5);
+		model.addAttribute("hitBoardUnderList", hitBoardUnderList);
 		
 		return "mainboard/listBoard";
 	}
