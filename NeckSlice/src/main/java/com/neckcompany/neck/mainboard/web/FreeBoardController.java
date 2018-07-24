@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.neckcompany.neck.mainboard.entity.FreeBoard;
-import com.neckcompany.neck.mainboard.service.FreeBoardService;
+import com.neckcompany.neck.mainboard.service.Impl.FreeBoardImpl;
 
 @Controller
 @RequestMapping(value="/mainboard")
 public class FreeBoardController {
 
-	@Autowired private FreeBoardService freeBoardService;
+	@Autowired private FreeBoardImpl freeBoardService;
 	
 	@RequestMapping(value="/listBoard.do", method = RequestMethod.GET)
 	public String freeBoardList(ModelMap model) {

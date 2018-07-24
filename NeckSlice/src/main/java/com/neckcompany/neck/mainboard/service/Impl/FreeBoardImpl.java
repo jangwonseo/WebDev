@@ -1,4 +1,4 @@
-package com.neckcompany.neck.mainboard.service;
+package com.neckcompany.neck.mainboard.service.Impl;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import com.neckcompany.neck.mainboard.repository.FreeBoardRepository;
 
 @Service
 @Transactional
-public class FreeBoardService {
+public class FreeBoardImpl {
 
 	@Autowired FreeBoardRepository freeBoardRepository;
 	
