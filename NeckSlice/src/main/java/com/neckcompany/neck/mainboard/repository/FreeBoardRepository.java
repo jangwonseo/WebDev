@@ -7,8 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.neckcompany.neck.mainboard.entity.FreeBoard;
+import com.neckcompany.neck.mainboard.repository.impl.FreeBoardRepositoryCustom;
 
-public interface FreeBoardRepository extends JpaRepository<FreeBoard, Long> {
+public interface FreeBoardRepository extends JpaRepository<FreeBoard, Long>, FreeBoardRepositoryCustom {
 	
 	/**
 	 * 일정 조회수 이상의 게시글 리스 조회
