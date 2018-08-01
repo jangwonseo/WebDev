@@ -103,5 +103,42 @@ th, td {
 	</tbody>
 	<tfoot></tfoot>
 </table>
+
+<%-- <table>
+	<thead>
+		<tr>
+			<th>제목</th>
+			<th>내용</th>
+			<th>조회</th>
+			<th>최종수정</th>
+		</tr>
+	</thead>
+	<tbody>
+	<c:forEach items="${freeBoardListHitOver3}" var="freeBoardHitOver3">
+		<tr>	
+			<td><c:out value="${freeBoardHitOver3.title}"></c:out></td>
+			<td><c:out value="${freeBoardHitOver3.contents}"></c:out></td>
+			<td><c:out value="${freeBoardHitOver3.hit}"></c:out></td>
+			<c:choose>
+				<c:when test="${empty freeBoardHitOver3.updateDatetime}">
+					<td><c:out value="${freeBoardHitOver3.createDatetime}"></c:out></td>
+				</c:when>
+				<c:otherwise>
+					<td><c:out value="${freeBoardHitOver3.updateDatetime}"></c:out></td>
+				</c:otherwise>
+			</c:choose>
+		</tr>
+	</c:forEach>
+	</tbody>
+	<tfoot></tfoot>
+</table> --%>
+
+<script>
+function hello() {
+	alert("hello");
+}
+
+hello();
+</script>
 </body>
 </html>

@@ -26,4 +26,8 @@ public class FreeBoardImpl {
 	public List<FreeBoard> getHittedUnder(Integer hitCount) {
 		return freeBoardRepository.findByHitUnder(hitCount);
 	}
+	
+//	public List<FreeBoard> getHittedOver3() {
+//		return freeBoardRepository.findFreeBoardListCustom();
+//	}
 }
