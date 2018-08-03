@@ -1,5 +1,6 @@
 package com.neckcompany.neck.mainboard.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -16,7 +17,9 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name="COMMENT", catalog = "Main_Board")
-public class Comment {
+public class Comment implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
 	@Column(name="COMMENT_ID")
