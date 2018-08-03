@@ -11,8 +11,8 @@ import com.querydsl.jpa.JPQLQuery;
 
 public class FreeBoardRepositoryImpl extends QuerydslRepositorySupport implements FreeBoardRepositoryCustom {
 
-	public FreeBoardRepositoryImpl(Class<?> domainClass) {
-		super(domainClass);
+	public FreeBoardRepositoryImpl() {
+		super(FreeBoard.class);
 	}
 
 	@Override
@@ -21,10 +21,10 @@ public class FreeBoardRepositoryImpl extends QuerydslRepositorySupport implement
 		QFreeBoard freeBoard = QFreeBoard.freeBoard;
 		QComment comment = QComment.comment;
 		
-//		JPQLQuery query = from(freeBoard);
-//		List<FreeBoard> freeBoardList = query.leftJoin(comment).fetchJoin().fetch();
+		JPQLQuery<FreeBoard> query = from(freeBoard);
+		List<FreeBoard> freeBoardList = query.join(freeBoard.commentList, comment).fetch();
 		
-		return null;
+		return freeBoardList;
 	}
 
 }

@@ -103,8 +103,8 @@ th, td {
 	</tbody>
 	<tfoot></tfoot>
 </table>
-
-<%-- <table>
+<br><br>
+<table>
 	<thead>
 		<tr>
 			<th>제목</th>
@@ -131,7 +131,7 @@ th, td {
 	</c:forEach>
 	</tbody>
 	<tfoot></tfoot>
-</table> --%>
+</table>
 
 <script>
 function hello() {
