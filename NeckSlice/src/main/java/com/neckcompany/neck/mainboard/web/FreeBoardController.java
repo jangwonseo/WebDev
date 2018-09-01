@@ -32,7 +32,6 @@ public class FreeBoardController {
 		List<FreeBoard> freeBoardListHitOver3 = freeBoardService.getHittedOver3();
 		model.addAttribute("freeBoardListHitOver3", freeBoardListHitOver3);
 		
-		
 		return "mainboard/listBoard";
 	}
 }

@@ -1,4 +1,4 @@
-package com.neckcompany.neck.mainboard.entity;
+package com.neckcompany.neck.login.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -7,37 +7,41 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name="COMMENT", catalog = "NECKSLICE")
-public class Comment implements Serializable{
+@Table(name="USER", catalog = "NECKSLICE")
+public class User implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id @GeneratedValue
-	@Column(name="COMMENT_ID")
+	@Column(name="USER_ID")
 	private Long id;
 	
-	@ManyToOne
-	@JoinColumn(name="FREE_BOARD_ID")
-	private FreeBoard freeBoard;
+	@Column(name="USERNAME")
+	private String username;
 	
-	@Column(name="TITLE")
-	private String title;
+	@Column(name="PASSWORD")
+	private String password;
 	
-	@Lob
-	@Column(name="CONTENTS")
-	private String contents;
+	@Column(name="NAME")
+	private String name;
 	
-	@Column(name="LIKE")
-	private Integer like;
+	@Column(name="BIRTHDAY")
+	private String birthday;
+	
+	@Column(name="AGE")
+	private Integer age;
+	
+	@Column(name="GENDER")
+	private Integer gender;
+	
+	@Column(name="EMAIL")
+	private String email;
 	
 	@Column(name="CREATE_DATETIME")
 	private LocalDateTime createDatetime;

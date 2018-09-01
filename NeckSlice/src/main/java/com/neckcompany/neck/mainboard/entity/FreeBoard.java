@@ -16,7 +16,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="FREE_BOARD", catalog = "Main_Board")
+@Table(name="FREE_BOARD", catalog = "NECKSLICE")
 public class FreeBoard implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
