@@ -79,6 +79,6 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean> 
 	
-	<context:component-scan base-package="com.neckcompany.neck"></context:component-scan>
+<!-- 	<context:component-scan base-package="com.neckcompany.neck"></context:component-scan> -->
 		
 </beans>
