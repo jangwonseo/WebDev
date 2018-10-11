@@ -24,13 +24,7 @@
 		http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
 		http://www.springframework.org/schema/data/jpa
 		http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-	
-	<!-- 스프링 프레임워크가 제공하는 어노테이션 기반의 트랜잭션 관리자를 활성화한다. @Transactional에 트랜잭션을 적용한다. -->
-	<tx:annotation-driven/>
-	
-	<!-- spring-data-jpa 검색 -->
-	<jpa:repositories base-package="com.neckcompany.neck.**.repository"/>
-	
+		
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
@@ -42,12 +36,6 @@
 		<property name="connectionTestQuery" value="select 1"></property>
 		<!-- https://github.com/brettwooldridge/HikariCP 에서 관련 property 설정을 더 볼 수 있다.--> 
 	</bean>
-	
-	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
-	
-	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></bean>
 	
 	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
@@ -79,6 +67,17 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean> 
 	
-<!-- 	<context:component-scan base-package="com.neckcompany.neck"></context:component-scan> -->
-		
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"></bean>
+	
+	<!-- Configure the transaction manager bean -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 스프링 프레임워크가 제공하는 어노테이션 기반의 트랜잭션 관리자를 활성화한다. @Transactional에 트랜잭션을 적용한다. -->
+	<tx:annotation-driven/>
+	
+	<!-- spring-data-jpa 검색 -->
+	<jpa:repositories base-package="com.neckcompany.neck.**.repository"/>
+	
 </beans>

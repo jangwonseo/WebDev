@@ -135,7 +135,7 @@ th, td {
 
 <script>
 function hello() {
-	alert("hello");
+	console.log("hello");
 }
 
 hello();

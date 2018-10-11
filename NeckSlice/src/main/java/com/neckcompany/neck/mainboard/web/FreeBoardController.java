@@ -17,8 +17,8 @@ public class FreeBoardController {
 
 	@Autowired private FreeBoardImpl freeBoardService;
 	
-	@RequestMapping(value="/listBoard.do", method = RequestMethod.GET)
-	public String freeBoardList(ModelMap model) {
+	@RequestMapping(value="/listBoard", method = RequestMethod.GET)
+	public String listBoard(ModelMap model) {
 		
 		List<FreeBoard> freeBoardList = freeBoardService.getAllFreeBoardList();
 		model.addAttribute("freeBoardList", freeBoardList);

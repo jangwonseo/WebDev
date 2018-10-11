@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation=" http://www.springframework.org/schema/beans
+             http://www.springframework.org/schema/beans/spring-beans.xsd
+             http://www.springframework.org/schema/security
+             http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <http pattern="/**/*.js" security="none"/>
+    <http pattern="/**/*.css" security="none"/>
+    <http pattern="/images/*" security="none"/>
+
+    <!-- 접근권한 설정부 -->
+    <http auto-config="true" use-expressions="true">
+        <csrf />
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/> <!-- 구체적인 url패턴부터 덜 구체적인 url패턴 순으로-->
+        <intercept-url pattern="/login/loginGet" access="isAnonymous()"/>
+        <intercept-url pattern="/mainboard/listBoard" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/" access="permitAll()"/>
+        <intercept-url pattern="/**" access="permitAll()"/>
+
+        <!-- 로그인시 폼 설정부분 -->
+        <!-- username/password-parameter 설정한 값으로 로그인폼에 name 값 설정 -->
+        <form-login
+            login-page="/login/loginGet"
+            login-processing-url="/login/loginPost"
+            username-parameter="username"
+            password-parameter="password"
+            always-use-default-target="true"
+            default-target-url="/"
+            authentication-failure-url="/login/loginGet?error=1"
+         />
+        <session-management>
+            <concurrency-control max-sessions="1" expired-url="/"/>
+        </session-management>
+    </http>
+
+    <!-- 접근 권한 부여하는 부분 -->
+    <authentication-manager>
+         <authentication-provider>
+             <user-service>
+                 <user name="mklmkl2001" password="{noop}1234" authorities="ROLE_USER"></user>
+             </user-service>
+         </authentication-provider>
+     </authentication-manager>
+
+</beans:beans>
